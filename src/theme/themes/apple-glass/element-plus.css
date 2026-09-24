@@ -1,0 +1,74 @@
+/* Element Plus 基础变量 */
+:root {
+  --el-color-primary: #007aff;
+  --el-border-radius-base: 12px;
+  --el-border-radius-small: 10px;
+  --el-border-radius-round: 999px;
+  --el-font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+/* 卡片：半透明玻璃 + 顶部内高光 */
+[data-theme='apple-glass'] .el-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-lg);
+  background: var(--app-surface);
+  backdrop-filter: var(--app-glass-filter);
+  box-shadow: var(--app-shadow-sm);
+}
+
+[data-theme='apple-glass'] .el-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--app-glass-highlight) 20%, var(--app-glass-highlight) 80%, transparent);
+  pointer-events: none;
+}
+
+/* 按钮：大圆角 */
+[data-theme='apple-glass'] .el-button {
+  border-radius: 12px;
+}
+
+/* 输入框 / 下拉：玻璃化 */
+[data-theme='apple-glass'] .el-input__wrapper,
+[data-theme='apple-glass'] .el-select__wrapper {
+  border-radius: 12px;
+  background: var(--app-surface-muted);
+  backdrop-filter: var(--app-glass-filter);
+  box-shadow: 0 0 0 1px var(--app-border) inset;
+}
+
+[data-theme='apple-glass'] .el-input__wrapper.is-focus,
+[data-theme='apple-glass'] .el-select__wrapper.is-focused {
+  box-shadow: 0 0 0 1.5px var(--app-primary) inset;
+}
+
+/* 下拉菜单 / 弹层：半透明玻璃 */
+[data-theme='apple-glass'] .el-popper.is-light,
+[data-theme='apple-glass'] .el-dropdown__popper {
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-md);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: var(--app-glass-filter);
+  box-shadow: var(--app-shadow-md);
+}
+
+/* 表格 / 描述列表内部透明化，露出卡片玻璃 */
+[data-theme='apple-glass'] .el-table,
+[data-theme='apple-glass'] .el-table__inner-wrapper::before,
+[data-theme='apple-glass'] .el-table tr,
+[data-theme='apple-glass'] .el-table th.el-table__cell {
+  background: transparent;
+}
+
+[data-theme='apple-glass'] .el-table th.el-table__cell {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme='apple-glass'] .el-table--enable-row-hover .el-table__body tr:hover > td.el-table__cell {
+  background: var(--app-primary-soft);
+}
